@@ -1,9 +1,14 @@
 Package: tsortmusicr
-Title: Functions to Work with Data from http://tsort.info/ - The World's Music Charts
+Title: Functions to Work with Data from https://tsort.info/ - The World's Music Charts
 Version: 0.0.0.9000
 Authors@R: person("Wolf", "Riepl", email = "wolf.riepl@statistik-dresden.de", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: Import data from https://tsort.info/; provide some functions for data wrangling and plotting
 Depends: R (>= 3.5.3)
-License: What license is it under?
+License: GPL
+URL: https://github.com/fjodor/tsortmusicr
+BugReports: https://github.com/fjodor/tsortmusicr/issues
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1
+Imports: 
+    readr (>= 1.3.1)
