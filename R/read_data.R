@@ -14,7 +14,7 @@
 #'
 #' @family read functions
 #'
-#' @param version The version in string format.
+#' @param version The version in string format. Defaults to function reading the current version from tsort.info.
 #' @param na How unknown years are encoded, in string format.
 #' @param tsort_path URL to Website.
 #' @param ... Pass additional parameters to readr::read_csv. See ?read_csv for details.
@@ -34,13 +34,14 @@
 #' }
 #' @export
 #'
-tsm_read_chart <- function(version = "2-8-0023",
+tsm_read_chart <- function(version = tsm_get_version(),
                        na = "unknown",
                        tsort_path = "https://tsort.info/",
                        ...) {
   data <- readr::read_csv(paste0(tsort_path, "tsort-chart-", version),
                   na = c("", "NA", na), ...)
   attr(data, "version") <- version
+  attr(data, "spec") <- NULL
   data
 }
 
@@ -78,30 +79,40 @@ tsm_read_chart <- function(version = "2-8-0023",
 #'}
 #' @export
 
-tsm_read_songs <- function(version = "2-8-0023",
+tsm_read_songs <- function(version = tsm_get_version(),
                            na = "unknown",
                            tsort_path = "https://tsort.info/csv/",
                            ...)      {
   data <- readr::read_csv(paste0(tsort_path, "top5000songs-", version),
                   na = c("", "NA", na), ...)
   attr(data, "version") <- version
+  attr(data, "spec") <- NULL
   data
 }
 
 
 
 ########################################################################
-# Get current file version number
+#' Get current file version number
 #'
 #' \code{tsm_get_version} Extracts the current file version used at \url{https://tsort.info}.
-#' @example
+#'
+#' Note that usage of data from tsort.info is free under the following conditions:
+#'
+#' 1. Acknowledge the source.
+#'
+#' 2. Prominently link to \url{https://tsort.info}
+#'
+#' 3. Always include version number.
+#'
+#' @family read functions
+#' @param url Website containing information on version numbers.
+#' @examples
 #' ## Get current file version.
 #' tsm_get_version()
 #' @export
 
 tsm_get_version <- function(url = "https://tsort.info/music/faq_version_numbers.htm") {
-  # webpage_version <- read_html(url)
-  # webpage_version <- read.table(file = url)
   version <- httr::GET(url)
   version <- httr::content(version, "text")
   start <- stringi::stri_locate_first(version, fixed = "CSV File: tsort-chart-")[1, 2] + 1

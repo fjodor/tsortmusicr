@@ -4,11 +4,11 @@
 \alias{tsm_read_songs}
 \title{Importing Song Data from tsort.info}
 \usage{
-tsm_read_songs(version = "2-8-0023", na = "unknown",
+tsm_read_songs(version = tsm_get_version(), na = "unknown",
   tsort_path = "https://tsort.info/csv/", ...)
 }
 \arguments{
-\item{version}{The version in string format.}
+\item{version}{The version in string format. Defaults to function reading the current version from tsort.info.}
 
 \item{na}{How unknown years are encoded, in string format.}
 
@@ -20,6 +20,15 @@ tsm_read_songs(version = "2-8-0023", na = "unknown",
 \code{tsm_read_songs} reads the top 5000 songs.
 A wrapper for readr::read_csv.
 }
+\details{
+Note that usage of data from tsort.info is free under the following conditions:
+
+1. Acknowledge the source.
+
+2. Prominently link to \url{https://tsort.info}
+
+3. Always include version number.
+}
 \examples{
 \dontrun{
 ## Read Top 5000 songs
@@ -30,6 +39,7 @@ attr(songs, "version")
 }
 }
 \seealso{
-Other read functions: \code{\link{tsm_read_chart}}
+Other read functions: \code{\link{tsm_get_version}},
+  \code{\link{tsm_read_chart}}
 }
 \concept{read functions}
