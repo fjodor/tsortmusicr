@@ -5,7 +5,7 @@
 \title{Importing Full Data from tsort.info}
 \usage{
 tsm_read_chart(version = "2-8-0023", na = "unknown",
-  tsort_path = "https://tsort.info/")
+  tsort_path = "https://tsort.info/", ...)
 }
 \arguments{
 \item{version}{The version in string format.}
@@ -13,9 +13,38 @@ tsm_read_chart(version = "2-8-0023", na = "unknown",
 \item{na}{How unknown years are encoded, in string format.}
 
 \item{tsort_path}{URL to Website.}
+
+\item{...}{Pass additional parameters to readr::read_csv. See ?read_csv for details.}
+}
+\value{
+A tibble (and data.frame) created from readr::read_csv.
+
+Additional attribute: file version. Access it: attr(data, "version")
 }
 \description{
-\code{read_chart} reads the complete set of data published at https://tsort.info.
+\code{tsm_read_chart} reads the complete set of data published at \url{https://tsort.info}.
+A wrapper for readr::read_csv.
+}
+\details{
+Note that usage of data from tsort.info is free under the following conditions:
+1. Acknowledge the source.
+
+2. Prominently link to \url{https://tsort.info}
+
+3. Always include version number.
+}
+\examples{
+\dontrun{
+## Read full data; this takes a while to run
+chart <- tsm_read_chart()
+
+## Using additional parameter from readr::read_csv
+## Extract only first 1000 rows of data
+chart <- tsm_read_chart(n_max = 1000)
+
+## Access file version number:
+attr(chart, "version")
+}
 }
 \seealso{
 Other read functions: \code{\link{tsm_read_songs}}
