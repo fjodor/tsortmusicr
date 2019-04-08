@@ -1,0 +1,38 @@
+#' Top 5000 Songs from tsort.info
+#'
+#' A dataset containing the Top 5000 Songs from \url{https://tsort.info}. Version 2-8-0025.
+#'
+#' Note that usage of data from tsort.info is free under the following conditions:
+#'
+#' 1. Acknowledge the source.
+#'
+#' 2. Prominently link to \url{https://tsort.info}
+#'
+#' 3. Always include version number.
+#'
+#' File version number "2-8-0025" included as an attribute. See Examples section.
+#'
+#' Note that rankings and scores are likely to change in new versions provided at \url{https://tsort.info}.
+#'
+#'@format A data frame with 5000 rows and 9 variables:
+#' \describe{
+#'     \item{position}{Position, 1 to 5000}
+#'     \item{artist}{Name of Band / Artist}
+#'     \item{name}{Song title}
+#'     \item{year}{Year the song was published}
+#'     \item{final_score}{Total score, calculated using weights by region and year, as documented in more detail at tsort.info. See FAQ. Datasets containing weights are available there.}
+#'     \item{raw_usa}{Raw points (i. e. without applying weights) achieved on the U.S. market.}
+#'     \item{raw_eng}{Raw points (i. e. without applying weights) achieved in the english-speaking countries excluding the U.S.A.}
+#'     \item{raw_eur}{Raw points (i. e. without applying weights) achieved in non-english-speaking European countries.}
+#'     \item{raw_row}{Raw points (i. e. without applying weights) achieved in the remaining countries (row = "rest of world"), i. e. exluding the markets above.}
+#'     }
+#'
+#' @source \url{https://tsort.info}
+#'
+#' @examples
+#' data(songs)        # Lazy loading. Data becomes visible as soon as used, e. g. via str(songs).
+#'
+#' ## Access file version number:
+#' attr(songs, "version")
+#' str(songs)
+"songs"
