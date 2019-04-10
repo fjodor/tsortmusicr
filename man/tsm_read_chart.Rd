@@ -8,7 +8,7 @@ tsm_read_chart(version = tsm_get_version(), na = "unknown",
   tsort_path = "https://tsort.info/", ...)
 }
 \arguments{
-\item{version}{The version in string format. Defaults to function reading the current version from tsort.info.}
+\item{version}{The version in string format. Defaults to function reading the current version from tsort.info. Example: "2-8-0025".}
 
 \item{na}{How unknown years are encoded, in string format.}
 
@@ -23,7 +23,7 @@ Additional attribute: file version. Access it: attr(data, "version")
 }
 \description{
 \code{tsm_read_chart} reads the complete set of data published at \url{https://tsort.info}.
-A wrapper for readr::read_csv.
+A wrapper for readr::read_csv with convenient defaults, see parameters.
 }
 \details{
 Note that usage of data from tsort.info is free under the following conditions:
@@ -49,6 +49,7 @@ attr(chart, "version")
 }
 \seealso{
 Other read functions: \code{\link{tsm_get_version}},
+  \code{\link{tsm_read_albums}},
   \code{\link{tsm_read_songs}}
 }
 \concept{read functions}

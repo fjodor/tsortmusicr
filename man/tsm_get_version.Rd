@@ -27,7 +27,8 @@ Note that usage of data from tsort.info is free under the following conditions:
 tsm_get_version()
 }
 \seealso{
-Other read functions: \code{\link{tsm_read_chart}},
+Other read functions: \code{\link{tsm_read_albums}},
+  \code{\link{tsm_read_chart}},
   \code{\link{tsm_read_songs}}
 }
 \concept{read functions}
