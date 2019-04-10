@@ -7,9 +7,9 @@ Currently implemented:
 
 ## Functions to read data from https://tsort.info
 
-* tsm_read_chart(): Wrapper around readr::read_csv to read full chart data from tsort.info, with convenient defaults (url, file name, NA coding).
-* tsm_read_songs(): Wrapper around readr::read_csv to read Top 5000 songs from tsort.info, with convenient defaults.
+* tsm_read_songs(): Wrapper around readr::read_csv to read Top 5000 songs from tsort.info, with convenient defaults (url, file name, NA coding).
 * tsm_read_albums(): Wrapper around readr::read_csv to read Top 3000 albums from tsort.info, with convenient defaults.
+* tsm_read_chart(): Wrapper around readr::read_csv to read full chart data from tsort.info, with convenient defaults.
 * tsm_get_version(): Function to find out current file version.
 
 ## Data frames
