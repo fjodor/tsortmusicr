@@ -160,4 +160,3 @@ tsm_get_version <- function(url = "https://tsort.info/music/faq_version_numbers.
   # list(version = version, start = start, end = end, suchtext = suchtext)
 }
 
-webpage_version <- tsm_get_version()
