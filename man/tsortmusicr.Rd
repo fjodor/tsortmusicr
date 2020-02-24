@@ -3,7 +3,6 @@
 \docType{package}
 \name{tsortmusicr}
 \alias{tsortmusicr}
-\alias{tsortmusicr-package}
 \title{Functions to work with data from https://tsort.info/ - The World's Music Charts}
 \description{
 Work in progress! Not a finished package! Functions and function names are likely to change in future versions.

@@ -4,8 +4,12 @@
 \alias{tsm_read_songs}
 \title{Importing Song Data from tsort.info}
 \usage{
-tsm_read_songs(version = tsm_get_version(), na = "unknown",
-  tsort_path = "https://tsort.info/csv/", ...)
+tsm_read_songs(
+  version = tsm_get_version(),
+  na = "unknown",
+  tsort_path = "https://tsort.info/csv/",
+  ...
+)
 }
 \arguments{
 \item{version}{The version in string format. Defaults to function reading the current version from tsort.info. Example: "2-8-0025".}
@@ -39,8 +43,9 @@ attr(songs, "version")
 }
 }
 \seealso{
-Other read functions: \code{\link{tsm_get_version}},
-  \code{\link{tsm_read_albums}},
-  \code{\link{tsm_read_chart}}
+Other read functions: 
+\code{\link{tsm_get_version}()},
+\code{\link{tsm_read_albums}()},
+\code{\link{tsm_read_chart}()}
 }
 \concept{read functions}

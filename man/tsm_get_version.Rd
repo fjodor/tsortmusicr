@@ -4,8 +4,7 @@
 \alias{tsm_get_version}
 \title{Get current file version number}
 \usage{
-
-  tsm_get_version(url = "https://tsort.info/music/faq_version_numbers.htm")
+tsm_get_version(url = "https://tsort.info/music/faq_version_numbers.htm")
 }
 \arguments{
 \item{url}{Website containing information on version numbers.}
@@ -27,8 +26,9 @@ Note that usage of data from tsort.info is free under the following conditions:
 tsm_get_version()
 }
 \seealso{
-Other read functions: \code{\link{tsm_read_albums}},
-  \code{\link{tsm_read_chart}},
-  \code{\link{tsm_read_songs}}
+Other read functions: 
+\code{\link{tsm_read_albums}()},
+\code{\link{tsm_read_chart}()},
+\code{\link{tsm_read_songs}()}
 }
 \concept{read functions}
