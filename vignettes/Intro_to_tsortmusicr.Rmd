@@ -2,7 +2,7 @@
 title: "Intro to tsortmusicr"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Intro_to_tsortmusicr}
+  %\VignetteIndexEntry{Intro to tsortmusicr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
