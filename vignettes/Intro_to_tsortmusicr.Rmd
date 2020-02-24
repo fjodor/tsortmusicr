@@ -1,0 +1,43 @@
+---
+title: "Intro to tsortmusicr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Intro_to_tsortmusicr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(tsortmusicr)
+```
+
+This is a package designed to help explore data from the great website https://tsort.info/.
+
+Note that usage of data from tsort.info is free under the following conditions:
+
+1. Acknowledge the source.
+
+2. Prominently link to https://tsort.info
+
+3. Always include version number.
+
+
+The following functions are available:
+
+**tsm_read_songs()**: Wrapper around readr::read_csv to read Top 5000 songs from tsort.info, with convenient defaults (url, file name, NA coding).
+
+**tsm_read_albums()**: Wrapper around readr::read_csv to read Top 3000 albums from tsort.info, with convenient defaults.
+
+**tsm_read_chart()**: Wrapper around readr::read_csv to read full chart data from tsort.info, with convenient defaults.
+
+**tsm_get_version()** retrieves the current version of the data at https://tsort.info/ as noted at this web address:
+
+https://tsort.info/music/faq_version_numbers.htm
+
