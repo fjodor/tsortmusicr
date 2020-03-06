@@ -29,7 +29,7 @@ Note that usage of data from tsort.info is free under the following conditions:
 3. Always include version number.
 
 
-The following functions are available:
+The following functions to read data from tsort.info are available:
 
 **tsm_read_songs()**: Wrapper around readr::read_csv to read Top 5000 songs from tsort.info, with convenient defaults (url, file name, NA coding).
 
@@ -40,4 +40,6 @@ The following functions are available:
 **tsm_get_version()** retrieves the current version of the data at https://tsort.info/ as noted at this web address:
 
 https://tsort.info/music/faq_version_numbers.htm
+
+
 

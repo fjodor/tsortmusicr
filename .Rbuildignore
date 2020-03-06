@@ -3,3 +3,5 @@
 ^\.Rproj\.user$
 ^doc$
 ^Meta$
+^tsort_master\.R$
+^test_tsort_ggplot\.R$
