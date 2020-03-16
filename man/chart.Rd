@@ -4,7 +4,8 @@
 \name{chart}
 \alias{chart}
 \title{Full data from tsort.info}
-\format{A data frame with 71141 rows and 17 variables:
+\format{
+A data frame with 71141 rows and 17 variables:
 \describe{
     \item{artist}{Name of Band / Artist}
     \item{name}{The name of the entry (song or album title)}
@@ -23,7 +24,8 @@
     \item{albumartist_pos}{The artist's position in the Top Album Artists list (note that only the artist's top album is labeled in this way)}
     \item{albumdecade_pos}{The album's position in its Album Decade list}
     \item{notes}{The chart entries for this item (this follows the templates defined on the Song Charts and Album Charts pages)}
-    }}
+    }
+}
 \source{
 \url{https://tsort.info}
 }

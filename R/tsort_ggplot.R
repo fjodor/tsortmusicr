@@ -3,14 +3,14 @@
 #' Create boxplot including original data points.
 #'
 #' @param data Data frame to use for plotting
-#' @param x Categorical variable
-#' @param y Continuous variable
+#' @param xvar Categorical variable
+#' @param yvar Continuous variable
 #' @param max_cats Maximum number of categories to be displayed
 #' @param title Plot title
 #' @param subtitle Plot subtitle
 #' @param farben Vector of colors. Defaults to palette "Dark2".
 #'
-#' @return Data is returned silently, so that plotting can be used within a pipe.
+#' @return ggplot object, so that it can be further manipulated (e. g. apply different theme, theme options)
 #' @export
 #'
 #' @examples
@@ -18,26 +18,39 @@
 #' tsm_ggbox(albums)
 #' tsm_ggbox(albums, title = "Release years of albums by selected bands"
 #'                   subtitle = "")
-#' tsm_ggbox(albums) + tsm_theme()
+#' albums %>%
+#'    filter(artist != "Original Soundtrack") %>%
+#'    tsm_ggbox()
 
 tsm_ggbox <- function(data,
-                      x = artist, y = year,
+                      xvar = artist, yvar = year,
                       max_cats = 15,
                       title = "Album release years",
                       subtitle = "Boxplots and raw data points",
-                      farben = tmaptools::get_brewer_pal("Dark2", n = max_cats)) {
-  if(length(levels(factor(data[["artist"]] > max_cats)))) {
-    message(paste("More than", max_cats, "artists present in data.\nThe", max_cats, "most frequent artists are displayed."))
-    artists <- data %>%
-      group_by(artist) %>%
+                      farben = tmaptools::get_brewer_pal("Dark2", n = max_cats, plot = FALSE)) {
+
+  nlev <- data %>%
+    dplyr::pull({{ xvar }}) %>%
+    factor() %>%
+    levels() %>%
+    length()
+
+  if(nlev > max_cats) {
+    message(paste0("More than ", max_cats, " unique values of ", deparse(substitute(xvar)), " present in data.\nThe ",
+                   max_cats, " most frequent values are displayed."))
+  }
+
+  selection <- data %>%
+      group_by({{ xvar }}) %>%
       summarise(N = n()) %>%
       arrange(desc(N)) %>%
       slice(1:max_cats) %>%
-      pull(artist)
-    data <- filter(data, artist %in% artists)
-  }
+      pull({{ xvar}} )
+    data <- data %>%
+      filter({{ xvar }} %in% selection)
 
-  plot <- ggplot2::ggplot(data, ggplot2::aes(x = forcats::fct_rev(forcats::fct_infreq({{x}})), y = {{y}}, col = artist)) +
+  plot <- ggplot2::ggplot(data, ggplot2::aes(x = forcats::fct_rev(forcats::fct_infreq({{ xvar }})),
+                                             y = {{ yvar }}, col = {{ xvar }})) +
     ggplot2::geom_boxplot(outlier.color = NA) +
     ggplot2::geom_jitter(width = 0.3, alpha = 0.7) +
     ggplot2::coord_flip() +
@@ -46,11 +59,12 @@ tsm_ggbox <- function(data,
          subtitle = subtitle,
          caption = paste("Source: tsort.info, version", attr(data, "version"))) +
     ggplot2::scale_color_manual(values = farben) +
+    tsm_theme() +
     ggplot2::theme(legend.position = "none",
           panel.grid.major.y = ggplot2::element_blank(),
           panel.grid.minor.y = ggplot2::element_blank())
   print(plot)
-  invisible(data)
+  # invisible(data)
 }
 
 #' A ggplot2 theme for plotting tsort.info data.

@@ -4,7 +4,8 @@
 \name{albums}
 \alias{albums}
 \title{Top 3000 Albums from tsort.info}
-\format{A data frame with 3000 rows and 9 variables:
+\format{
+A data frame with 3000 rows and 9 variables:
 \describe{
     \item{position}{The item's position in the overall list, from 1 to 3000}
     \item{artist}{The name of the artist / band}
@@ -15,7 +16,8 @@
     \item{raw_eng}{Raw score (i. e. without applying weights) from the non-USA English speaking countries (UK, Canada, Australia, New Zealand, South Africa, Ireland and Hong Kong)}
     \item{raw_eur}{Raw score (i. e. without applying weights) from the non-English speaking countries in Europe (Germany, France, Austria, Norway, Sweden, Italy, Switzerland, Spain, Netherlands, Belgium, Poland, Denmark, Finland and the Vatican)}
     \item{raw_row}{Raw score (i. e. without applying weights) from the remaining countries (row = "rest of world"), i. e. exluding the markets above.}
-    }}
+    }
+}
 \source{
 \url{https://tsort.info}
 }

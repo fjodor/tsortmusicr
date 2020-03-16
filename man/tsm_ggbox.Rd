@@ -2,33 +2,45 @@
 % Please edit documentation in R/tsort_ggplot.R
 \name{tsm_ggbox}
 \alias{tsm_ggbox}
-\title{Plotting functions for tsort.info data}
+\title{Boxplots for tsort.info data}
 \usage{
 tsm_ggbox(
   data,
+  xvar = artist,
+  yvar = year,
+  max_cats = 15,
   title = "Album release years",
   subtitle = "Boxplots and raw data points",
-  farben = tmaptools::get_brewer_pal("Dark2", n = 16)
+  farben = tmaptools::get_brewer_pal("Dark2", n = max_cats, plot = FALSE)
 )
 }
 \arguments{
-\item{data}{Data frame to use for plotting.}
+\item{data}{Data frame to use for plotting}
 
-\item{title}{Plot title.}
+\item{xvar}{Categorical variable}
 
-\item{subtitle}{Plot subtitle.}
+\item{yvar}{Continuous variable}
 
-\item{farben}{Vector of colors.}
+\item{max_cats}{Maximum number of categories to be displayed}
+
+\item{title}{Plot title}
+
+\item{subtitle}{Plot subtitle}
+
+\item{farben}{Vector of colors. Defaults to palette "Dark2".}
 }
 \value{
-Data is returned silently, so that plotting can be used within a pipe.
+ggplot object, so that it can be further manipulated (e. g. apply different theme, theme options)
 }
 \description{
-Plotting functions for tsort.info data
+Create boxplot including original data points.
 }
 \examples{
 
 tsm_ggbox(albums)
 tsm_ggbox(albums, title = "Release years of albums by selected bands"
                   subtitle = "")
+albums \%>\%
+   filter(artist != "Original Soundtrack") \%>\%
+   tsm_ggbox()
 }
