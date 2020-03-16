@@ -29,6 +29,8 @@ Note that usage of data from tsort.info is free under the following conditions:
 3. Always include version number.
 
 
+## Data import from tsort.info
+
 The following functions to read data from tsort.info are available:
 
 **tsm_read_songs()**: Wrapper around readr::read_csv to read Top 5000 songs from tsort.info, with convenient defaults (url, file name, NA coding).
@@ -42,6 +44,24 @@ The following functions to read data from tsort.info are available:
 https://tsort.info/music/faq_version_numbers.htm
 
 
+## Customized plotting
+
 The following plotting function is available:
 
-**tsm_ggbox()**: ggplot2 boxplot additionally showing original data points using a slightly customized theme.
+**tsm_ggbox(data)**: ggplot2 boxplot additionally showing original data points using a slightly customized theme.
+
+tsm_ggbox(albums)
+
+
+## Usage
+
+```{r usage, include = TRUE, fig.width = 6, fig.height = 5}
+
+tsm_get_version()
+
+albums <- tsm_read_albums()
+attr(albums, "version")
+
+tsm_ggbox(albums)
+
+```
