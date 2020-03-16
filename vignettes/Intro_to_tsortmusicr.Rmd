@@ -42,4 +42,6 @@ The following functions to read data from tsort.info are available:
 https://tsort.info/music/faq_version_numbers.htm
 
 
+The following plotting function is available:
 
+**tsm_ggbox()**: ggplot2 boxplot additionally showing original data points using a slightly customized theme.

@@ -27,3 +27,8 @@ Data frames that ship with the package:
 * songs: Top 5000 Songs from tsort.info, 9 variables, version 2-8-0025.
 * albums: Top 3000 Albums from tsort.info, 9 variables, version 2-8-0025.
 * chart: Full data from tsort.info, 71141 rows, 17 variables, version 2-8-0025.
+
+
+## Plotting function
+
+* tsm_ggbox(): ggplot2 boxplot additionally showing original data points using a slightly customized theme.
