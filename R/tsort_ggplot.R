@@ -41,13 +41,13 @@ tsm_ggbox <- function(data,
   }
 
   selection <- data %>%
-      group_by({{ xvar }}) %>%
-      summarise(N = n()) %>%
-      arrange(desc(N)) %>%
-      slice(1:max_cats) %>%
-      pull({{ xvar}} )
+      dplyr::group_by({{ xvar }}) %>%
+      dplyr::summarise(N = n()) %>%
+      dplyr::arrange(desc(N)) %>%
+      dplyr::slice(1:max_cats) %>%
+      dplyr::pull({{ xvar}} )
     data <- data %>%
-      filter({{ xvar }} %in% selection)
+      dplyr::filter({{ xvar }} %in% selection)
 
   plot <- ggplot2::ggplot(data, ggplot2::aes(x = forcats::fct_rev(forcats::fct_infreq({{ xvar }})),
                                              y = {{ yvar }}, col = {{ xvar }})) +
