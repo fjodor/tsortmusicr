@@ -37,8 +37,9 @@ Create boxplot including original data points.
 }
 \examples{
 
+library(dplyr)
 tsm_ggbox(albums)
-tsm_ggbox(albums, title = "Release years of albums by selected bands"
+tsm_ggbox(albums, title = "Release years of albums by selected bands",
                   subtitle = "")
 albums \%>\%
    filter(artist != "Original Soundtrack") \%>\%

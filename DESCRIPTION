@@ -2,7 +2,7 @@ Package: tsortmusicr
 Title: Functions to Work with Data from https://tsort.info/ - The World's Music Charts
 Version: 0.0.0.9003
 Authors@R: person("Wolf", "Riepl", email = "wolf.riepl@statistik-dresden.de", role = c("aut", "cre"))
-Description: Import data from https://tsort.info/; provide some functions for data wrangling and plotting
+Description: Functions to import data from https://tsort.info/, plotting function.
 Depends: R (>= 3.5.0)
 License: MIT + file LICENSE
 URL: https://github.com/fjodor/tsortmusicr
@@ -17,7 +17,8 @@ Imports:
     dplyr (>= 0.8.0),
     magrittr,
     tmaptools (>= 2.0-2),
-    forcats (>= 0.5.0)
+    forcats (>= 0.5.0),
+    stringi
 Suggests: 
     testthat (>= 2.1.0),
     knitr,

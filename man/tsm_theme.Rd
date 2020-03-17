@@ -13,5 +13,10 @@ No return value.
 Function to be used within ggplot2 calls or ggplot2 functions within the tsortmusicr package.
 }
 \examples{
-tsm_ggbox() + tsm_theme()
+library(ggplot2)
+p <- ggplot(albums, aes(x = year, y = final_score)) +
+   geom_jitter(alpha = 0.7) +
+   labs(title = "Final score by year")
+p
+p + tsm_theme()
 }
