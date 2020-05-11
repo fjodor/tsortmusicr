@@ -1,8 +1,8 @@
 Package: tsortmusicr
 Title: Functions to Work with Data from https://tsort.info/ - The World's Music Charts
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: person("Wolf", "Riepl", email = "wolf.riepl@statistik-dresden.de", role = c("aut", "cre"))
-Description: Functions to import data from https://tsort.info/, plotting function.
+Description: Functions to import data from https://tsort.info/, plotting functions.
 Depends: R (>= 3.5.0)
 License: MIT + file LICENSE
 URL: https://github.com/fjodor/tsortmusicr
