@@ -72,5 +72,5 @@ tsm_ggbox(albums)
 
 You can make an interactive plotly chart like so (not carried out here because of file sizes):
   
-`p <- tsm_ggbox(albums)`
-`tsm_ggbox_plotly(p)`
+    p <- tsm_ggbox(albums)
+    tsm_ggbox_plotly(p)
