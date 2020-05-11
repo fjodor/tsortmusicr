@@ -18,7 +18,8 @@ Imports:
     magrittr,
     tmaptools (>= 2.0-2),
     forcats (>= 0.5.0),
-    stringi
+    stringi,
+    plotly (>= 4.9.2.1)
 Suggests: 
     testthat (>= 2.1.0),
     knitr,

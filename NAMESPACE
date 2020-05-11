@@ -3,6 +3,7 @@
 export("%>%")
 export(tsm_get_version)
 export(tsm_ggbox)
+export(tsm_ggbox_plotly)
 export(tsm_read_albums)
 export(tsm_read_chart)
 export(tsm_read_songs)

@@ -7,7 +7,7 @@
 tsm_theme()
 }
 \value{
-No return value.
+A complete ggplot2 theme based on theme_bw(). Font size 14, text family "serif"
 }
 \description{
 Function to be used within ggplot2 calls or ggplot2 functions within the tsortmusicr package.

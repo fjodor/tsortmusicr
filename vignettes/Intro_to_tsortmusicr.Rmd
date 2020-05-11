@@ -33,7 +33,7 @@ Note that usage of data from tsort.info is free under the following conditions:
 
 The following functions to read data from tsort.info are available:
 
-**tsm_read_songs()**: Wrapper around readr::read_csv to read Top 5000 songs from tsort.info, with convenient defaults (url, file name, NA coding).
+**tsm_read_songs()**: Wrapper around readr::read_csv to read Top 5000 songs from tsort.info, with convenient defaults (url, file name, NA encoding).
 
 **tsm_read_albums()**: Wrapper around readr::read_csv to read Top 3000 albums from tsort.info, with convenient defaults.
 
@@ -46,12 +46,16 @@ https://tsort.info/music/faq_version_numbers.htm
 
 ## Customized plotting
 
-The following plotting function is available:
+The following plotting functions are available:
 
-**tsm_ggbox(data)**: ggplot2 boxplot additionally showing original data points using a slightly customized theme.
+**tsm_ggbox(data)**: ggplot2 boxplot additionally showing original data points using a slightly customized theme based on theme_bw().
 
 tsm_ggbox(albums)
 
+**tsm_ggbox_plotly(p)**: interactive plotly diagram showing mouse-over information.
+
+p <- tsm_ggbox(albums)
+tsm_ggbox_plotly(p)
 
 ## Usage
 
@@ -63,5 +67,8 @@ albums <- tsm_read_albums()
 attr(albums, "version")
 
 tsm_ggbox(albums)
+
+p <- tsm_ggbox(albums)
+tsm_ggbox_plotly(p)
 
 ```

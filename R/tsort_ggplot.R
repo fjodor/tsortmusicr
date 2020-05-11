@@ -2,13 +2,14 @@
 #'
 #' Create boxplot including original data points.
 #'
-#' @param data Data frame to use for plotting
-#' @param xvar Categorical variable
-#' @param yvar Continuous variable
-#' @param max_cats Maximum number of categories to be displayed
-#' @param title Plot title
-#' @param subtitle Plot subtitle
-#' @param farben Vector of colors. Defaults to palette "Dark2".
+#' @param data data frame to use for plotting
+#' @param xvar categorical variable
+#' @param yvar continuous variable
+#' @param label a variable that can be used in plotly::ggploty() to label data points
+#' @param max_cats maximum number of categories to be displayed
+#' @param title plot title
+#' @param subtitle plot subtitle
+#' @param farben vector of colors. Defaults to palette "Dark2"
 #'
 #' @return ggplot object, so that it can be further manipulated (e. g. apply different theme, theme options)
 #' @export
@@ -25,6 +26,7 @@
 
 tsm_ggbox <- function(data,
                       xvar = artist, yvar = year,
+                      label = name,
                       max_cats = 15,
                       title = "Album release years",
                       subtitle = "Boxplots and raw data points",
@@ -46,14 +48,15 @@ tsm_ggbox <- function(data,
       dplyr::summarise(N = dplyr::n()) %>%
       dplyr::arrange(dplyr::desc(N)) %>%
       dplyr::slice(1:max_cats) %>%
-      dplyr::pull({{ xvar}} )
+      dplyr::pull({{ xvar }} )
     data <- data %>%
       dplyr::filter({{ xvar }} %in% selection)
 
-  plot <- ggplot2::ggplot(data, ggplot2::aes(x = forcats::fct_rev(forcats::fct_infreq({{ xvar }})),
-                                             y = {{ yvar }}, col = {{ xvar }})) +
+  xvar <- forcats::fct_rev(forcats::fct_infreq(data[[deparse(substitute(xvar))]]))
+  plot <- ggplot2::ggplot(data, ggplot2::aes(x = {{ xvar }}, y = {{ yvar }},
+                                             label = {{ label }}, col = {{ xvar }})) +
     ggplot2::geom_boxplot(outlier.color = NA) +
-    ggplot2::geom_jitter(width = 0.3, alpha = 0.7) +
+    ggplot2::geom_jitter(width = 0.2, alpha = 0.7) +
     ggplot2::coord_flip() +
     ggplot2::labs(x = "", y = "Release year",
          title = title,
@@ -64,7 +67,7 @@ tsm_ggbox <- function(data,
     ggplot2::theme(legend.position = "none",
           panel.grid.major.y = ggplot2::element_blank(),
           panel.grid.minor.y = ggplot2::element_blank())
-  print(plot)
+  return(plot)
   # invisible(data)
 }
 
@@ -72,7 +75,7 @@ tsm_ggbox <- function(data,
 #'
 #' Function to be used within ggplot2 calls or ggplot2 functions within the tsortmusicr package.
 #'
-#' @return No return value.
+#' @return A complete ggplot2 theme based on theme_bw(). Font size 14, text family "serif"
 #' @export
 #'
 #' @examples
@@ -85,5 +88,21 @@ tsm_ggbox <- function(data,
 
 tsm_theme <- function() {
   ggplot2::theme_bw() +
-    ggplot2::theme(text = ggplot2::element_text(size = 16, family = "serif"))
+    ggplot2::theme(text = ggplot2::element_text(size = 14, family = "serif"))
+}
+
+#' Interactive boxplot using plotly
+#'
+#' @param p A ggplot2 boxplot, preferably created using tsm_ggbox()
+#' @param tooltip Which information shall be displayed on mouseover? Choices are "x", "y", and "label"
+#'
+#' @return An interactive plotly boxplot
+#' @export
+#'
+#' @examples
+#' p <- tsm_ggbox(albums)
+#' tsm_ggbox_plotly(p)
+
+tsm_ggbox_plotly <- function(p, tooltip = c("x", "y", "label")) {
+  plotly::ggplotly(p, tooltip = tooltip)
 }

@@ -8,6 +8,7 @@ tsm_ggbox(
   data,
   xvar = artist,
   yvar = year,
+  label = name,
   max_cats = 15,
   title = "Album release years",
   subtitle = "Boxplots and raw data points",
@@ -15,19 +16,21 @@ tsm_ggbox(
 )
 }
 \arguments{
-\item{data}{Data frame to use for plotting}
+\item{data}{data frame to use for plotting}
 
-\item{xvar}{Categorical variable}
+\item{xvar}{categorical variable}
 
-\item{yvar}{Continuous variable}
+\item{yvar}{continuous variable}
 
-\item{max_cats}{Maximum number of categories to be displayed}
+\item{label}{a variable that can be used in plotly::ggploty() to label data points}
 
-\item{title}{Plot title}
+\item{max_cats}{maximum number of categories to be displayed}
 
-\item{subtitle}{Plot subtitle}
+\item{title}{plot title}
 
-\item{farben}{Vector of colors. Defaults to palette "Dark2".}
+\item{subtitle}{plot subtitle}
+
+\item{farben}{vector of colors. Defaults to palette "Dark2"}
 }
 \value{
 ggplot object, so that it can be further manipulated (e. g. apply different theme, theme options)
