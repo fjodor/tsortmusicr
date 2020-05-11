@@ -54,7 +54,7 @@ tsm_ggbox(albums)
 
 **tsm_ggbox_plotly(p)**: interactive plotly diagram showing mouse-over information.
 
-p <- tsm_ggbox(albums)
+p <- tsm_ggbox(albums)  
 tsm_ggbox_plotly(p)
 
 ## Usage
@@ -68,12 +68,9 @@ attr(albums, "version")
 
 tsm_ggbox(albums)
 
-# p <- tsm_ggbox(albums)
-# tsm_ggbox_plotly(p)
-
 ```
 
 You can make an interactive plotly chart like so (not carried out here because of file sizes):
-
-`p <- tsm_ggbox(albums)
+  
+`p <- tsm_ggbox(albums)    
 tsm_ggbox_plotly(p)`
