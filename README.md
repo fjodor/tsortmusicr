@@ -29,6 +29,8 @@ Data frames that ship with the package:
 * chart: Full data from tsort.info, 71141 rows, 17 variables, version 2-8-0025.
 
 
-## Plotting function
+## Plotting functions
 
 * tsm_ggbox(): ggplot2 boxplot additionally showing original data points using a slightly customized theme.
+* tsm_ggbox_plotly(): turns boxplot into interactive plotly diagram, giving information on mouse-over.
+
