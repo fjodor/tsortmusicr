@@ -74,4 +74,3 @@ You can make an interactive plotly chart like so (not carried out here because o
   
 `p <- tsm_ggbox(albums)`
 `tsm_ggbox_plotly(p)`
-
