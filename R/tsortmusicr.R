@@ -29,7 +29,6 @@
 #'     \item Always include version number.
 #' }
 #'
-
 #' Data frames that ship with the package:
 #'
 #' \itemize{
