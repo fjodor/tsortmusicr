@@ -1,6 +1,6 @@
 Package: tsortmusicr
 Title: Functions to Work with Data from https://tsort.info/ and https://chart2000.com/
-Version: 0.0.4
+Version: 0.0.5
 Authors@R: person("Wolf", "Riepl", email = "wolf.riepl@statistik-dresden.de", role = c("aut", "cre"))
 Description: Functions to import data from https://tsort.info/ and https://chart2000.com/ and plotting functions.
 Depends: R (>= 3.5.0)
