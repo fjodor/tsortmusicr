@@ -48,11 +48,11 @@ https://tsort.info/music/faq_version_numbers.htm
 
 The following functions to read data from chart2000.com are available:
 
-**ch2k_read_songs()**: Wrapper around readr::read_csv to read Top 5000 songs from tsort.info, with convenient defaults (url, file name, NA encoding).
+**ch2k_read_songs()**: Wrapper around readr::read_csv to read Top 50 songs per month from chart2000.com, with convenient defaults (url, file name, NA encoding).
 
-**ch2k_read_albums()**: Wrapper around readr::read_csv to read Top 3000 albums from tsort.info, with convenient defaults.
+**ch2k_read_albums()**: Wrapper around readr::read_csv to read Top 50 albums per month from chart2000.com, with convenient defaults.
 
-**ch2k_get_version()** retrieves the current version of the data at https://tsort.info/ as noted at this web address:
+**ch2k_get_version()** retrieves the current version of the data at https://chart2000.com/ as noted at this web address:
 
 https://chart2000.com/about.htm
 
