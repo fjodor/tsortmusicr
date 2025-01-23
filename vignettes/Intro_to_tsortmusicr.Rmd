@@ -18,13 +18,13 @@ knitr::opts_chunk$set(
 library(tsortmusicr)
 ```
 
-This is a package designed to help explore data from the great website https://tsort.info/.
+This is a package designed to help explore data from the great websites https://tsort.info/ and https://chart2000.com/.
 
-Note that usage of data from tsort.info is free under the following conditions:
+Note that usage of data from tsort.info and chart2000.com is free under the following conditions:
 
 1. Acknowledge the source.
 
-2. Prominently link to https://tsort.info
+2. Prominently link to https://tsort.info or https://chart2000.com respectively.
 
 3. Always include version number.
 
@@ -42,6 +42,21 @@ The following functions to read data from tsort.info are available:
 **tsm_get_version()** retrieves the current version of the data at https://tsort.info/ as noted at this web address:
 
 https://tsort.info/music/faq_version_numbers.htm
+
+
+## Data import from chart2000.com
+
+The following functions to read data from chart2000.com are available:
+
+**ch2k_read_songs()**: Wrapper around readr::read_csv to read Top 5000 songs from tsort.info, with convenient defaults (url, file name, NA encoding).
+
+**ch2k_read_albums()**: Wrapper around readr::read_csv to read Top 3000 albums from tsort.info, with convenient defaults.
+
+**ch2k_get_version()** retrieves the current version of the data at https://tsort.info/ as noted at this web address:
+
+https://chart2000.com/about.htm
+
+Note there is currently no equivalent to `tsm_read_chart()` to import the full data set. chart2000.com offers data containing top artists and songs that have their own pages, as well as songs of the year and albums of the year, featuring the top 100 per year. Importing these datasets is currently not supported by the package.
 
 
 ## Customized plotting
