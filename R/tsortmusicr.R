@@ -13,6 +13,13 @@
 #'     \item tsm_get_version(): Function to find out current file version.
 #' }
 #'
+#' Functions to read data from https://chart2000.com
+#'
+#' \itemize{
+#'     \item ch2k_read_songs(): Wrapper around readr::read_csv to read Top 50 songs from chart2000.com, with convenient defaults (url, file name, NA coding).
+#'     \item ch2k_read_albums(): Wrapper around readr::read_csv to read Top 50 albums from chart2000.com, with convenient defaults.
+#'     \item ch2k_get_version(): Function to find out current file version.
+#'
 #' @section Data frames:
 #' Note that usage of data from tsort.info is free under the following conditions:
 #'
@@ -34,10 +41,5 @@
 #' @section Plans:
 #' Provide some functions for displaying these data.
 #'
-#' @docType package
 #' @name tsortmusicr
-NULL
-#> NULL
-
-
-
+"_PACKAGE"
