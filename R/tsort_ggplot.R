@@ -25,7 +25,7 @@
 #'    tsm_ggbox()
 
 tsm_ggbox <- function(data,
-                      xvar = artist, yvar = year,
+                      xvar = year, yvar = artist,
                       label = name,
                       max_cats = 15,
                       title = "Album release years",
@@ -33,32 +33,33 @@ tsm_ggbox <- function(data,
                       farben = tmaptools::get_brewer_pal("Dark2", n = max_cats, plot = FALSE)) {
 
   nlev <- data %>%
-    dplyr::pull({{ xvar }}) %>%
+    dplyr::pull({{ yvar }}) %>%
     factor() %>%
     levels() %>%
     length()
 
   if(nlev > max_cats) {
-    message(paste0("More than ", max_cats, " unique values of ", deparse(substitute(xvar)), " present in data.\nThe ",
+    message(paste0("More than ", max_cats, " unique values of ", deparse(substitute(yvar)), " present in data.\nThe ",
                    max_cats, " most frequent values are displayed."))
   }
 
   selection <- data %>%
-      dplyr::group_by({{ xvar }}) %>%
-      dplyr::summarise(N = dplyr::n()) %>%
-      dplyr::arrange(dplyr::desc(N)) %>%
+      dplyr::count({{ yvar }}, sort = TRUE) %>%
       dplyr::slice(1:max_cats) %>%
-      dplyr::pull({{ xvar }} )
-    data <- data %>%
-      dplyr::filter({{ xvar }} %in% selection)
+      dplyr::pull({{ yvar }} )
 
-  xvar <- forcats::fct_rev(forcats::fct_infreq(data[[deparse(substitute(xvar))]]))
-  plot <- ggplot2::ggplot(data, ggplot2::aes(x = {{ xvar }}, y = {{ yvar }},
-                                             label = {{ label }}, col = {{ xvar }})) +
-    ggplot2::geom_boxplot(outlier.color = NA) +
-    ggplot2::geom_jitter(width = 0.2, alpha = 0.7) +
-    ggplot2::coord_flip() +
-    ggplot2::labs(x = "", y = "Release year",
+  data <- data %>%
+      dplyr::filter({{ yvar }} %in% selection)
+
+  yvar <- forcats::fct_rev(forcats::fct_infreq(data[[deparse(substitute(yvar))]]))
+  plot <- ggplot2::ggplot(data, ggplot2::aes(label = {{ label }})) +
+    ggplot2::geom_boxplot(outlier.color = NA,
+                          ggplot2::aes(x = {{ xvar }}, y = {{ yvar }}, color = {{ yvar }}),
+                          inherit.aes = FALSE) +
+    ggplot2::geom_jitter(width = 0.2, alpha = 0.7,
+                         ggplot2::aes(x = {{ xvar }}, y = {{ yvar }}, color = {{ yvar }}),
+                         inherit.aes = FALSE) +
+    ggplot2::labs(x = "Release year", y = "",
          title = title,
          subtitle = subtitle,
          caption = paste("Source: tsort.info, version", attr(data, "version"))) +
